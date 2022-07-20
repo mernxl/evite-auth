@@ -53,7 +53,7 @@ spec:
     spec:
       containers:
         - name: evite-micro-auth
-          image: docker.io/mernxl/evite-micro-auth:latest
+          image: registry.gitlab.com/mernxl-evite/evite-micro-auth:latest
           imagePullPolicy: IfNotPresent
           env:
             - name: JWT_SECRET
