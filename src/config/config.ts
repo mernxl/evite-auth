@@ -15,14 +15,6 @@ export interface AppConfiguration {
   MINIO_REGION?: string;
   MINIO_USE_SSL?: string;
 
-  CRYPTO: {
-    SYSTEM_SECRET: string;
-  };
-
-  EVENT: {
-    BUCKET_NAME: string;
-  };
-
   app: {
     name: string;
     version: string;
