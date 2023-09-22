@@ -5,15 +5,11 @@ metadata:
   namespace: evite-micro
 spec:
   hosts:
-    - "evite.com"
-    - "www.evite.com"
+    - auth.api.evite.com
   gateways:
     - evite-micro-gateway
   http:
-    - match:
-        - uri:
-            prefix: /auth
-      route:
+    - route:
         - destination:
             host: evite-micro-auth
             port:
@@ -57,7 +53,7 @@ spec:
       containers:
         - name: evite-micro-auth
           image: registry.gitlab.com/mernxl-evite/evite-micro-auth:latest
-          imagePullPolicy: IfNotPresent
+          imagePullPolicy: Always
           env:
             - name: JWT_SECRET
               valueFrom:
@@ -89,6 +85,11 @@ spec:
                 configMapKeyRef:
                   name: evite-config
                   key: MINIO_REGION
+            - name: MINIO_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: evite-config
+                  key: MINIO_PORT
             - name: MINIO_USE_SSL
               valueFrom:
                 configMapKeyRef:
@@ -111,6 +112,10 @@ spec:
               value: "4041"
             - name: NODE_ENV
               value: production
+            - name: SMTP_USER_PASS
+              value: ""
+            - name: SMTP_USER_NAME
+              value: ""
           ports:
             - containerPort: 4041
 ---

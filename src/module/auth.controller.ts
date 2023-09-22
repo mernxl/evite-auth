@@ -44,6 +44,7 @@ import {
 import { EPasswordRecoveryStrategies, IPassword, PasswordModel } from './password';
 import { SessionModel } from './session';
 import { IUser, IUserBase, UserModel } from './user';
+import { config } from '../config';
 
 /**
  * Authentication and Authorizations - Basic Security
@@ -358,5 +359,10 @@ export class AuthController extends Controller {
     }
 
     return false;
+  }
+
+  @Get('/health')
+  async health(): Promise<string> {
+    return config.app.name + ' Service is healthy.';
   }
 }

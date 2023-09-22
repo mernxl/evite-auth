@@ -4,16 +4,13 @@ import packageJson from '../../package.json';
 
 export interface AppConfiguration {
   NODE_ENV: NODE_ENV;
-  SERVER_PORT: number;
-  SERVER_HOST: string;
+  PORT: number;
+  HOST: string;
   JWT_SECRET: string;
   API_BASE_PATH: string;
   APP_SERVING_URL: string;
   REVERSE_PROXY: boolean;
   MONGODB_USE_IN_MEMORY_DB?: boolean;
-
-  MINIO_REGION?: string;
-  MINIO_USE_SSL?: string;
 
   app: {
     name: string;
@@ -31,12 +28,6 @@ export interface AppConfiguration {
     host: string;
     defaultDb: string;
   };
-  minio: {
-    endpoint: string;
-    port: number;
-    accessKey: string;
-    secretKey: string;
-  };
   mailer: {
     user: string;
     pass: string;
@@ -49,8 +40,8 @@ const getConfig = (): AppConfiguration =>
   loadConfig<AppConfiguration>('app.ini', {
     API_BASE_PATH: '',
     APP_SERVING_URL: '',
-    SERVER_PORT: 4040,
-    SERVER_HOST: 'localhost',
+    PORT: 4040,
+    HOST: 'localhost',
     app: {
       name: packageJson.name,
       version: packageJson.version,
