@@ -10,6 +10,10 @@ export interface AppConfiguration {
   API_BASE_PATH: string;
   APP_SERVING_URL: string;
   REVERSE_PROXY: boolean;
+
+  NEW_RELIC_API_KEY: string;
+  NEW_RELIC_OTEL_ENDPOINT: string;
+
   MONGODB_USE_IN_MEMORY_DB?: boolean;
 
   app: {
